@@ -1,0 +1,18 @@
+{
+  "name": "lidia-backend",
+  "version": "1.0.0",
+  "description": "Backend for Lid.IA personal assistant",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "db:deploy": "npx prisma migrate deploy"
+  },
+  "dependencies": {
+    "pg": "^8.7.1",
+    "express": "^4.17.1",
+    "dotenv": "^10.0.0",
+    "winston": "^3.3.3",
+    "node-fetch": "^2.6.1",
+    "redis": "^4.0.0"
+  }
+}
