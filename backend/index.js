@@ -1,5 +1,6 @@
 const express = require('express');
-const app = express(); 
+const fetch = require('node-fetch'); // Import node-fetch
+const app = express();
 const db = require('./db'); // Import the database connection
 const logger = require('./logger'); // Import the logger
 const whatsappRouter = require('./whatsapp'); // Import the WhatsApp router
