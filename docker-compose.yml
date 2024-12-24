@@ -4,14 +4,14 @@ services:
   evolution-api:
     image: atendai/evolution-api:v2.2.0
     ports:
-      - "8081:8080"
+      - "8082:8082"
     environment:
       API_KEY: lidiakey # This will be generated automatically
       CACHE_REDIS_ENABLED: true
-      CACHE_REDIS_URI: redis://default:dd87578fae3c3f066a0f@evolution_redis:6379
+      CACHE_REDIS_URI: redis://default:dd87578fae3c3f066a0f@evolution_redis:6381
       DATABASE_ENABLED: true
       DATABASE_PROVIDER: postgresql
-      DATABASE_CONNECTION_URI: "postgresql://user:password@evolution_db:5432/evolution_db?schema=public"
+      DATABASE_CONNECTION_URI: "postgresql://user:password@evolution_db:5434/evolution_db?schema=public"
       DATABASE_CONNECTION_CLIENT_NAME: evolution_exchange
       DATABASE_SAVE_DATA_INSTANCE: true
       DATABASE_SAVE_DATA_NEW_MESSAGE: true
@@ -31,7 +31,7 @@ services:
       POSTGRES_PASSWORD: password
       POSTGRES_DB: evolution_db
     ports:
-      - "5433:5432" # Expose a different port for the evolution database
+      - "5434:5434" # Expose a different port for the evolution database
 
   evolution_redis:
     image: redis:latest
@@ -39,7 +39,7 @@ services:
       REDIS_USER: default
       REDIS_PASSWORD: dd87578fae3c3f066a0f
     ports:
-      - "6379:6379" # Expose Redis on the default port
+      - "6381:6381" # Expose Redis on the default port
 
   backend:
     depends_on:
@@ -49,7 +49,7 @@ services:
       context: ./backend
       dockerfile: Dockerfile
     ports:
-      - "3001:3000" # Adjusted to avoid port conflict
+      - "3003:3003" # Adjusted to avoid port conflict
 
   backend_db:
     image: postgres:latest
@@ -58,4 +58,4 @@ services:
       POSTGRES_PASSWORD: backend_password
       POSTGRES_DB: backend_db
     ports:
-      - "5435:5432"  # Expose a different port for the backend database
+      - "5437:5437"  # Expose a different port for the backend database
